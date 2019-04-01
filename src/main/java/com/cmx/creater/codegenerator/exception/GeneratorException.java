@@ -33,10 +33,8 @@ public class GeneratorException extends RuntimeException implements BaseExceptio
         this.status = status;
     }
 
-    private BaseException errorInfo;
 
     public GeneratorException(BaseException error) {
-        this.errorInfo = error;
         this.code = error.getCode();
         this.message = error.getMessage();
         this.status = error.getStatus();
@@ -44,7 +42,6 @@ public class GeneratorException extends RuntimeException implements BaseExceptio
 
     public GeneratorException(BaseException error, Throwable t) {
         super(t);
-        this.errorInfo = error;
         this.code = error.getCode();
         this.message = error.getMessage();
         this.status = error.getStatus();
@@ -52,15 +49,11 @@ public class GeneratorException extends RuntimeException implements BaseExceptio
 
     @Override
     public String getCode(){
-        return errorInfo.getCode();
+        return this.code;
     }
 
     @Override
     public String getMessage(){
-        if(null != errorInfo){
-            return errorInfo.getMessage();
-        }else {
-            return super.getMessage() == null ? this.message : super.getMessage();
-        }
+        return super.getMessage() == null ? this.message : super.getMessage();
     }
 }

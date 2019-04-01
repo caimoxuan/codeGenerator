@@ -14,7 +14,10 @@ public enum ExceptionEnum implements BaseException{
 
 
     /** 数据库连接 */
-    SQL_SONNECTION_FAIL(HttpStatus.INTERNAL_SERVER_ERROR, "20000", "数据库连接出错");
+    SQL_SONNECTION_FAIL(HttpStatus.INTERNAL_SERVER_ERROR, "20000", "数据库连接出错"),
+    CONNECTION_PARAM_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "20002", "数据库连接信息异常"),
+    SQL(HttpStatus.INTERNAL_SERVER_ERROR, "20003", "数据库连接出错"),
+    SQL_MESSAGE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "20010", "获取数据库信息异常");
 
     private int status;
     private String code;

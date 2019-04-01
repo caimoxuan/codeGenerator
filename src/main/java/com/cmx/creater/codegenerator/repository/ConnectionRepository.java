@@ -33,7 +33,7 @@ public class ConnectionRepository {
             return connection;
         }catch (Exception e){
             throw new GeneratorException(ExceptionEnum.SQL_SONNECTION_FAIL.getCode(), "connect to "
-                    + url + " use" + cModel.getUserName() + "error : "
+                    + url + " use username " + cModel.getUserName() + " error : "
                     + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
