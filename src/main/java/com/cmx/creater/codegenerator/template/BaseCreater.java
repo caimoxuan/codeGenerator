@@ -112,12 +112,5 @@ public class BaseCreater extends Creater{
 		
 		return sb.toString();
 	}
-	/*
-	public static void main(String[] args){
-		BaseCreater  bc = new BaseCreater();
-		String baseServiceImplCodeCreater = bc.baseServiceImplCodeCreater();
-		System.out.println(baseServiceImplCodeCreater);
-	}
-	*/
 
 }

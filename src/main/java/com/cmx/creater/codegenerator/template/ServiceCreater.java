@@ -1,41 +1,35 @@
 package com.cmx.creater.codegenerator.template;
 
 
+import com.cmx.creater.codegenerator.common.Table;
 import com.cmx.creater.codegenerator.utils.FileCreateUtil;
 import com.cmx.creater.codegenerator.utils.NameUtil;
 
+import java.io.ByteArrayOutputStream;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 
-public class ServiceCreater extends Creater{
-	
-	
-	public ServiceCreater(){
-		super();
-		configMap.put("basePackageName", "com.cmx");
-		configMap.put("servicePath", "service");
+public class ServiceCreater extends Creater implements CodeCreater{
+
+
+
+	@Override
+	public Map<String, ByteArrayOutputStream> createCode(List<Table> tables) {
+		return null;
 	}
-	
-	
-	public void createService(Map<String, Object> tableinfo){
-		
-		Set<String> keySet = tableinfo.keySet();
-		for(String s : keySet){
-			if(s.endsWith("-key")){
-				
-			}else{
-				createServiceInterface(NameUtil.getBeanName(s));
-				createServiceImpl(NameUtil.getBeanName(s));
-			}
-		}
+
+	@Override
+	public String createCodeWithTableName(List<Table> tables, String tableName) {
+		return null;
 	}
 	
 	
 	public String createServiceInterface(String beanName){
-		String packageName = configMap.get("basePackageName").toString().replace("\\", ".") + "." + configMap.get("servicePath");
-		String beanPath = configMap.get("basePackageName").toString().replace("\\", ".") + "." + configMap.get("beanPath").toString();
-		String basePath = configMap.get("basePackageName").toString().replace("\\", ".") + "." + configMap.get("basePath").toString();
+		String packageName = config.getServicePath();
+		String beanPath = config.getDomainPath();
+		String basePath = config.getBasePath();
  		StringBuffer sb = new StringBuffer();
  		sb.append("package " + packageName + ";\n\n");
  		sb.append("import " + beanPath + "." + beanName + ";\n");
@@ -43,12 +37,6 @@ public class ServiceCreater extends Creater{
  		sb.append("public interface " + beanName + "Service extends BaseService<" + beanName + "> {\n\n");
  		
  		sb.append("\n}");
- 		String filePath = configMap.get("filePath").toString() + "\\" + packageName.replace(".", "\\");
- 		try{
- 			FileCreateUtil.createFile(beanName+"Service.java", filePath, sb.toString());
- 		}catch(Exception e){
- 			e.printStackTrace();
- 		}
  		return sb.toString();
 	}
 	
@@ -78,6 +66,4 @@ public class ServiceCreater extends Creater{
  		}
 		return sb.toString();
 	}
-	
-	
 }

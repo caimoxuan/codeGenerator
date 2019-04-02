@@ -19,9 +19,21 @@ public class GeneratorConfig {
 
     private String resourcePath;
 
+    private String basePath;
+
+    /**
+     * basePackage + daoPath
+     */
     private String daoPath;
 
+    /**
+     * UserDao or UserMapper
+     */
     private String daoSuffix;
+    /**
+     * use lombok
+     */
+    private boolean lombokEnable;
 
 
     public GeneratorConfig(){
@@ -32,6 +44,8 @@ public class GeneratorConfig {
         this.mapperPath = resourcePath + ".mapper";
         this.domainPath = basePackageName + ".domain";
         this.servicePath = basePackageName + ".service";
+        this.basePath = basePackageName + "base";
+        this.lombokEnable = true;
     }
 
 }

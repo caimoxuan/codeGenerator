@@ -1,53 +1,61 @@
 package com.cmx.creater.codegenerator.template;
 
 
-import com.cmx.creater.codegenerator.utils.FileCreateUtil;
+import com.cmx.creater.codegenerator.common.Table;
 import com.cmx.creater.codegenerator.utils.NameUtil;
+import lombok.extern.slf4j.Slf4j;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
+@Slf4j
+public class DaoCreater extends Creater implements CodeCreater{
 
-public class DaoCreater extends Creater{
-	
-	
-	public DaoCreater(){
-		super();
-		configMap.put("basePackageName", "com.cmx");
-		configMap.put("daoPath", "dao");
-	}
-	
-	
-	public void createDao(Map<String, Object> tableinfo){
-		
-		Set<String> keySet = tableinfo.keySet();
-		for(String s : keySet){
-			if(s.endsWith("-key")){
-				
-			}else{
-				s = s.replace("t_", "");
-				daoCodeCreater(NameUtil.getBeanName(s));
+	@Override
+	public Map<String, ByteArrayOutputStream> createCode(List<Table> tables) {
+		Map<String, ByteArrayOutputStream> beanStream = new HashMap<>(tables.size());
+		for (Table t : tables) {
+			String content = daoCodeCreater(NameUtil.getBeanName(t.getTableName()));
+			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+			try {
+				byteArrayOutputStream.write(content.getBytes());
+				beanStream.put(config.getDaoPath().replace(".", "/")
+						+ "/" + NameUtil.getBeanName(t.getTableName()) + config.getDaoSuffix()
+						+ ".java", byteArrayOutputStream);
+			} catch (IOException e) {
+				log.error("dao create error : {}, table : {}", e, t.getTableName());
 			}
 		}
-		
-		
-		
+
+		return beanStream;
+	}
+
+	@Override
+	public String createCodeWithTableName(List<Table> tables, String tableName) {
+
+		for(Table table : tables){
+			if(table.getTableName().equals(tableName)){
+				return daoCodeCreater(NameUtil.getBeanName(tableName));
+			}
+		}
+		return null;
 	}
 	
 	
 	public String daoCodeCreater(String beanName){
-		StringBuffer sb = new StringBuffer();
-		String filePath = configMap.get("filePath").toString().replace(".", "\\")+"\\" + configMap.get("basePackageName").toString()+"\\"+configMap.get("daoPath");
-		String packageName = configMap.get("basePackageName").toString().replace("\\", ".") + "." + configMap.get("daoPath");
-		String baseDaoPackage = configMap.get("basePackageName").toString().replace("\\", ".") + "." + configMap.get("basePath");
-		String beanPath = configMap.get("basePackageName").toString().replace("\\", ".") + "." + configMap.get("beanPath");
-		String suffix = configMap.get("suffix").toString();
+		StringBuilder sb = new StringBuilder();
+		String packageName = config.getDaoPath();
+		String beanPath = config.getDomainPath();
+		String suffix = config.getDaoSuffix();
 		sb.append("package " + packageName + ";\n\n");
 		sb.append("import java.util.List;\n\n");
 		//sb.append("import " + baseDaoPackage+".BaseDao;\n");
 		sb.append("import " + beanPath + "." + beanName + ";\n\n");
 		
-		sb.append("public interface " + beanName+suffix + /**" extends BaseDao<" + beanName + ">*/ "{\n\n");
+		sb.append("public interface " + beanName + suffix + /**" extends BaseDao<" + beanName + ">*/ "{\n\n");
 
 		sb.append("\tList<" + beanName + "> select("+ beanName + " "+ NameUtil.getLowCaseName(beanName) +");\n\n");
 		sb.append("\tint update("+ beanName + " "+ NameUtil.getLowCaseName(beanName) + ");\n\n");
@@ -56,14 +64,7 @@ public class DaoCreater extends Creater{
 		sb.append("\t" + beanName + " getById(Object id);\n");
 
 		sb.append("}");
-		try{
-			FileCreateUtil.createFile(beanName+suffix+".java", filePath, sb.toString());
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+
 		return sb.toString();
 	}
-	
-	
-	
 }

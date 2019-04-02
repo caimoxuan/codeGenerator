@@ -2,8 +2,6 @@ package com.cmx.creater.codegenerator.cache;
 
 import com.cmx.creater.codegenerator.common.Table;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
