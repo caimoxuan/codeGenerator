@@ -24,7 +24,7 @@ public class ConnectionModel {
 
 
     public ConnectionModel(){
-        this.driver = "com.mysql.jdbc.Driver";
+        this.driver = "com.mysql.cj.jdbc.Driver";
     }
 
 }

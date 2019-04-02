@@ -22,6 +22,8 @@ public final class SqlTypeUtil {
                 return "Integer";
             case "bigint":
             case "BIGINT":
+            case "BIGINT UNSIGNED":
+            case "bigint unsigned":
             case "id":
             case "ID":
             case "timestamp":
@@ -39,6 +41,9 @@ public final class SqlTypeUtil {
             case "datetime":
             case "DATETIME":
                 return "Date";
+            case "bit":
+            case "BIT":
+                return "Boolean";
             default:
                 return "String";
         }

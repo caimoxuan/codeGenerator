@@ -22,6 +22,7 @@ public class ApiResult<T> implements Serializable {
         this.code = "200";
         this.message = "success";
         this.data = data;
+        this.status = HttpStatus.OK;
         return this;
     }
 

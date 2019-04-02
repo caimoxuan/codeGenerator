@@ -16,6 +16,7 @@ import java.sql.DriverManager;
 @Repository
 public class ConnectionRepository {
 
+    private static final String CONNECT_PARAM = "?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF8&allowMultiQueries=true&useSSL=true";
 
     public Connection getConnection(ConnectionModel cModel) throws GeneratorException {
 
@@ -26,7 +27,7 @@ public class ConnectionRepository {
             e.printStackTrace();
         }
 
-        String url = "jdbc:mysql://" + cModel.getHost() + "/" + cModel.getDatabase();
+        String url = "jdbc:mysql://" + cModel.getHost() + ":" + cModel.getPort() +"/" + cModel.getDatabase() + CONNECT_PARAM;
 
         try{
             Connection connection = DriverManager.getConnection(url, cModel.getUserName(), cModel.getPassword());

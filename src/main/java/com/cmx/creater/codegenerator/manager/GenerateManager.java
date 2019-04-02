@@ -36,7 +36,7 @@ public class GenerateManager {
             try {
                 return tableInfoRepository.getTableName(connection);
             } catch (SQLException e) {
-                log.error("get table message error : {}", e.getMessage());
+                log.error("get table message error : {}", e);
                 throw new GeneratorException(ExceptionEnum.SQL_MESSAGE_ERROR);
             }
         }

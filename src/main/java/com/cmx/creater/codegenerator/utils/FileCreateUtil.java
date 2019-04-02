@@ -9,28 +9,24 @@ import java.io.IOException;
  * 文件创建工具
  */
 public final class FileCreateUtil {
-	
-	private static File f;
-		
-	private static FileWriter fw;
-	
+
+	/**
+	 * create file at local server
+	 * @param fileName
+	 * @param filePath
+	 * @param content
+	 */
 	public static void createFile(String fileName, String filePath, String content) {
-		
-		f  = new File(filePath);
-		if(f.exists()){
-			System.out.println("路径存在: " + filePath);
-		}else{
-			if(f.mkdirs()) {
-				System.out.println("创建路径成功");
-			}
-			else {
-				System.out.println("创建失败");
+
+		File f  = new File(filePath);
+		if(!f.exists()){
+			if(!f.mkdirs()) {
+				return;
 			}
 		}
-		
-		System.out.println("创建文件："+filePath+"\\"+fileName);
-		f = new File(filePath+"\\"+fileName);
 
+		f = new File(filePath + "\\" + fileName);
+		FileWriter fw = null;
 		try {
 			fw = new FileWriter(f);
 

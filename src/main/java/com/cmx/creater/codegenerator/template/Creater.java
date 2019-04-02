@@ -1,5 +1,9 @@
 package com.cmx.creater.codegenerator.template;
 
+import com.cmx.creater.codegenerator.common.GeneratorConfig;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.util.HashMap;
@@ -9,7 +13,11 @@ import java.util.Set;
 public abstract class Creater {
 
 	
-	protected Map<String, Object> configMap = new HashMap<>();
+	Map<String, Object> configMap = new HashMap<>();
+
+	@Getter
+	@Setter
+	GeneratorConfig config = new GeneratorConfig();
 
 	public Map<String, Object> getConfigMap() {
 		return configMap;

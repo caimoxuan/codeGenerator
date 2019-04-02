@@ -35,6 +35,7 @@ public class ConnectionController {
     public ApiResult<List<TableVO>> getTables(@RequestParam String host, @RequestParam String userName,
                                               @RequestParam String password, @RequestParam Integer port,
                                               @RequestParam String database, HttpServletRequest request){
+        log.info("get connect request : {},{},{},{}", host , userName, port, database);
         ApiResult<List<TableVO>> result = new ApiResult<>();
 
         ConnectionModel model = new ConnectionModel();

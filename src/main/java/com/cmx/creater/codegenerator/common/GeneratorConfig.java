@@ -1,9 +1,12 @@
 package com.cmx.creater.codegenerator.common;
 
+import lombok.Data;
+
 /**
  * @author cmx
  * @date 2019/4/1
  */
+@Data
 public class GeneratorConfig {
 
     private String basePackageName;
