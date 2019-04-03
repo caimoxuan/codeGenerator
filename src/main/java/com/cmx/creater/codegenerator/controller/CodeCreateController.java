@@ -4,7 +4,10 @@ import com.cmx.creater.codegenerator.cache.SessionTableStore;
 import com.cmx.creater.codegenerator.common.ApiResult;
 import com.cmx.creater.codegenerator.exception.GeneratorException;
 import com.cmx.creater.codegenerator.service.GeneratorService;
+import com.cmx.creater.codegenerator.template.BeanCreater;
+import com.cmx.creater.codegenerator.template.DaoCreater;
 import com.cmx.creater.codegenerator.template.MapperCreater;
+import com.cmx.creater.codegenerator.utils.HtmlCodeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,9 +43,36 @@ public class CodeCreateController {
         ApiResult<String> result = new ApiResult<>();
         try {
             String content = generatorService.generateOneSimpleFileContent(tableName, sessionTableStore, MapperCreater.class);
-            return result.successResult(content);
+            return result.successResult(HtmlCodeUtil.parseXmlCode(content));
         }catch (GeneratorException e){
            return result.failResult(e);
+        }
+    }
+
+
+    @RequestMapping(value = "/bean", method = RequestMethod.GET)
+    public ApiResult<String> createBeanCode(@RequestParam String tableName){
+        log.info("get createBeanCode request table : {}", tableName);
+
+        ApiResult<String> result = new ApiResult<>();
+        try {
+            String content = generatorService.generateOneSimpleFileContent(tableName, sessionTableStore, BeanCreater.class);
+            return result.successResult(HtmlCodeUtil.parseCodeToHtml(content));
+        }catch (GeneratorException e){
+            return result.failResult(e);
+        }
+    }
+
+    @RequestMapping(value = "/dao", method = RequestMethod.GET)
+    public ApiResult<String> createDaoCode(@RequestParam String tableName){
+        log.info("get createDaoCode request table : {}", tableName);
+
+        ApiResult<String> result = new ApiResult<>();
+        try {
+            String content = generatorService.generateOneSimpleFileContent(tableName, sessionTableStore, DaoCreater.class);
+            return result.successResult(HtmlCodeUtil.parseCodeToHtml(content));
+        }catch (GeneratorException e){
+            return result.failResult(e);
         }
     }
 
@@ -51,6 +81,8 @@ public class CodeCreateController {
         log.info("get zipCode request");
         List<Class> classes = new ArrayList<>();
         classes.add(MapperCreater.class);
+        classes.add(DaoCreater.class);
+        classes.add(BeanCreater.class);
         InputStream zipCode = null;
         ServletOutputStream outputStream = null;
 

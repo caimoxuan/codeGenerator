@@ -24,7 +24,7 @@ public class BeanCreater extends Creater implements CodeCreater {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             try {
                 byteArrayOutputStream.write(content.getBytes());
-                beanStream.put(config.getMapperPath().replace(".", "/")
+                beanStream.put(config.getDomainPath().replace(".", "/")
                         + "/" + NameUtil.getBeanName(t.getTableName())
                         + ".java", byteArrayOutputStream);
             } catch (IOException e) {
@@ -45,7 +45,6 @@ public class BeanCreater extends Creater implements CodeCreater {
         return null;
     }
 
-    //创建bean模板
     private String createBeanCode(Table table) {
         StringBuilder sb = new StringBuilder();
 
@@ -69,7 +68,7 @@ public class BeanCreater extends Creater implements CodeCreater {
         } else {
             sb.append("\n");
         }
-        sb.append("public class " + beanName + " implements Serializable {\n");
+        sb.append("public class " + beanName + " implements Serializable {\n\n");
         sb.append("\tprivate static final long serialVersionUID = 1L;\n");
         //生成属性
         columns.forEach(((s, column) -> {
@@ -79,7 +78,7 @@ public class BeanCreater extends Creater implements CodeCreater {
         }));
         sb.append("\n");
         //生成属性的getter和setter
-        if(config.isLombokEnable()) {
+        if(!config.isLombokEnable()) {
             for (Column column: columns.values()) {
                 String type = SqlTypeUtil.getJavaType(column.getColumnType());
                 String filed = NameUtil.lineToHump(column.getColumnName());
@@ -89,7 +88,7 @@ public class BeanCreater extends Creater implements CodeCreater {
                 sb.append("\t}\n");
                 sb.append("\tpublic " + type + " get" + filedName + "(){\n");
                 sb.append("\t\treturn " + filed + ";\n");
-                sb.append("\t}\n\n");
+                sb.append("\t}\n");
             }
             //生成toString
             sb.append("\tpublic String toString(){\n");
