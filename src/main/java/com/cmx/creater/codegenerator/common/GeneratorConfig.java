@@ -33,7 +33,7 @@ public class GeneratorConfig {
     /**
      * use lombok
      */
-    private boolean lombokEnable;
+    private Boolean lombokEnable;
 
 
     public GeneratorConfig(){

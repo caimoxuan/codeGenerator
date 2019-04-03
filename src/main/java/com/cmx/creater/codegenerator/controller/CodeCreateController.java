@@ -2,6 +2,7 @@ package com.cmx.creater.codegenerator.controller;
 
 import com.cmx.creater.codegenerator.cache.SessionTableStore;
 import com.cmx.creater.codegenerator.common.ApiResult;
+import com.cmx.creater.codegenerator.enums.CodeCreateType;
 import com.cmx.creater.codegenerator.exception.GeneratorException;
 import com.cmx.creater.codegenerator.service.GeneratorService;
 import com.cmx.creater.codegenerator.template.BeanCreater;
@@ -77,12 +78,21 @@ public class CodeCreateController {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public void getZipCode(HttpServletResponse response){
+    public void getZipCode(HttpServletResponse response, @RequestParam List<String> types){
         log.info("get zipCode request");
         List<Class> classes = new ArrayList<>();
-        classes.add(MapperCreater.class);
-        classes.add(DaoCreater.class);
-        classes.add(BeanCreater.class);
+
+        if(types == null || types.size() < 1){
+            return;
+        }
+
+        for(String type : types){
+            CodeCreateType codeCreateType = CodeCreateType.getType(type);
+            if(codeCreateType != null){
+                classes.add(codeCreateType.getClazz());
+            }
+        }
+
         InputStream zipCode = null;
         ServletOutputStream outputStream = null;
 

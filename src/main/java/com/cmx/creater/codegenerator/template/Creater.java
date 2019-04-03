@@ -12,16 +12,14 @@ import java.util.Set;
 
 public abstract class Creater {
 
-	
+
 	Map<String, Object> configMap = new HashMap<>();
 
 	@Getter
 	@Setter
 	GeneratorConfig config = new GeneratorConfig();
 
-	public Map<String, Object> getConfigMap() {
-		return configMap;
-	}
+
 
 	public void setConfigMap(Map<String, Object> configMap) {
 		Set<String> keySet = configMap.keySet();
