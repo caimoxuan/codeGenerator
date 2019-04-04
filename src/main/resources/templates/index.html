@@ -1,13 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <title>code generator online</title>
-    <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
 </head>
 <body>
-    <div>
-        index.html
+<div>
+    <div class="page-sidebar ">
+        <ul class="page-sidebar-menu">
+            <li>
+                <a id="drawer"  href="javascript:void(0);" data-state="close" onclick="drawerCollapse()" style="color: white">
+                    <span class=".glyphicon .glyphicon-align-center" style="color: yellow;font-size: 20px;margin:14px 27px"></span>
+                </a>
+
+            </li>
+            <li>
+                <a  href="" >
+                    <p class="menu-p" style="display: none">主页</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+
+                    <p class="menu-p" style="display: none">信息管理</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+
+                    <p class="menu-p" style="display: none">能耗管理</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+
+                    <p class="menu-p" style="display: none">碳排放</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+
+                    <p class="menu-p" style="display: none">在线审计</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <p class="menu-p" style="display: none">监控管理</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+
+                    <p class="menu-p" style="display: none">计量数据</p>
+                </a>
+            </li>
+            <li>
+                <a class="change" id="collapseListGroupHeading1" data-toggle="collapse" data-target="#collapseListGroup1" role="tab" >
+
+                    <p class="menu-p" style="display: none">服务平台</p>
+                    <span class="glyphicon glyphicon-chevron-up right arrow" style="display: none"></span>
+                </a>
+                <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+                <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading1" style="display: none">
+                    <ul class="list-menu">
+                        <li>
+                            <a href="">信息公告管理</a>
+                        </li>
+                        <li>
+                            <a href="">待办事项管理</a>
+                        </li>
+                        <li>
+                            <a href="">产品信息管理</a>
+                        </li>
+                        <li>
+                            <a href="">能源系数设置</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <p class="menu-p" style="display: none">系统设置</p>
+                </a>
+            </li>
+        </ul>
     </div>
+</div>
 </body>
+<script>
+    $(function(){
+        $(".change").click(function(e){
+            /*切换折叠指示图标*/
+            $(this).find("span").toggleClass("glyphicon-chevron-up");
+            $(this).find("span").toggleClass("glyphicon-chevron-down");
+        });
+    });
+
+
+    function drawerCollapse(){
+        var state = $("#drawer").attr("data-state");
+        if (state == 'close'){
+            //设置打开
+            $(".page-sidebar").css("width","225px");
+            $(".page-content").css("margin-left","225px");
+            $("#drawer").attr("data-state",'open');
+            $(".menu-p").css("display","");
+            $(".collapse").css("display","");
+            $(".arrow").css("display","");
+        }else{
+            //设置关闭
+            $(".page-sidebar").css("width","75px");
+            $(".page-content").css("margin-left","75px");
+            $("#drawer").attr("data-state",'close');
+            $(".menu-p").css("display","none");
+            $(".collapse").css("display","none");
+            $(".arrow").css("display","none");
+        }
+    }
+</script>
 </html>
