@@ -5,6 +5,10 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * @author cmx
+ * @param <T> result data
+ */
 @Data
 public class ApiResult<T> implements Serializable {
 

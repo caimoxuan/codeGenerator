@@ -82,7 +82,7 @@ public final class ZipUtil {
         ZipOutputStream zipOutputStream = new ZipOutputStream(zipBuffer);
         try {
 
-            Map<String, ByteArrayOutputStream> streamMap = new HashMap<>();
+            Map<String, ByteArrayOutputStream> streamMap = new HashMap<>(16);
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             byteArrayOutputStream.write("test".getBytes());
             streamMap.put("textMapper.xml",byteArrayOutputStream);

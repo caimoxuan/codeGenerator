@@ -10,20 +10,23 @@ import java.io.IOException;
 import java.net.URLDecoder;
 
 
-public class MvcCreater extends Creater{
+/**
+ * @author cmx
+ */
+public class MvcAbstractCreater extends AbstractCreater {
 	
-	public MvcCreater(){
+	public MvcAbstractCreater(){
 		super();
 		configMap.put("basePackageName", "com.cmx");
 	}
 	
 	
-	public void createWEB_INFRoot(){
+	public void createWebInfRoot(){
 		String folderpath = configMap.get("filePath").toString().replace(".", "\\")+"\\"+"WEB-INF";
 		
 		try {
-			FileCreateUtil.createFile("springmvc-servlet.xml", folderpath, createSpring_servlet());
-			FileCreateUtil.createFile("web.xml", folderpath, createWeb_xml());
+			FileCreateUtil.createFile("springmvc-servlet.xml", folderpath, createSpringServlet());
+			FileCreateUtil.createFile("web.xml", folderpath, createWebXml());
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch(Exception e){
@@ -32,7 +35,7 @@ public class MvcCreater extends Creater{
 		
 	}
 	
-	public String createSpring_servlet(){
+	public String createSpringServlet(){
 		String basePackageName = configMap.get("basePackageName").toString().replace("\\", ".");
 		
 		StringBuffer sb = new StringBuffer();
@@ -74,7 +77,7 @@ public class MvcCreater extends Creater{
 		return sb.toString();
 	}
 	
-	public String createWeb_xml() throws Exception{
+	public String createWebXml() throws Exception{
 		String path = this.getClass().getResource("").getFile();
 		System.out.println(path);
 		StringBuffer sb = new StringBuffer();

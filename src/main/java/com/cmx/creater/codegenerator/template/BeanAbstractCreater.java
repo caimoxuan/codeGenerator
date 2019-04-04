@@ -13,8 +13,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author cmx
+ */
 @Slf4j
-public class BeanCreater extends Creater implements CodeCreater {
+public class BeanAbstractCreater extends AbstractCreater implements CodeCreater {
 
     @Override
     public Map<String, ByteArrayOutputStream> createCode(List<Table> tables) {
@@ -63,7 +66,7 @@ public class BeanCreater extends Creater implements CodeCreater {
         }
         sb.append("\nimport java.io.Serializable;\n");
         sb.append("import lombok.Data;\n");
-        if (config.isLombokEnable()) {
+        if (config.getLombokEnable()) {
             sb.append("\n@Data\n");
         } else {
             sb.append("\n");
@@ -78,7 +81,7 @@ public class BeanCreater extends Creater implements CodeCreater {
         }));
         sb.append("\n");
         //生成属性的getter和setter
-        if(!config.isLombokEnable()) {
+        if(!config.getLombokEnable()) {
             for (Column column: columns.values()) {
                 String type = SqlTypeUtil.getJavaType(column.getColumnType());
                 String filed = NameUtil.lineToHump(column.getColumnName());

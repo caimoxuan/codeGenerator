@@ -1,8 +1,6 @@
 package com.cmx.creater.codegenerator.template;
 
 import com.cmx.creater.codegenerator.common.GeneratorConfig;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
@@ -10,15 +8,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class Creater {
+/**
+ * @author cmx
+ */
+public abstract class AbstractCreater {
 
 
 	Map<String, Object> configMap = new HashMap<>();
 
-	@Getter
-	@Setter
 	GeneratorConfig config = new GeneratorConfig();
 
+	public void setGeneratorConfig(GeneratorConfig config){
+		this.config = config;
+	}
 
 
 	public void setConfigMap(Map<String, Object> configMap) {
@@ -28,7 +30,7 @@ public abstract class Creater {
 		}
 	}
 	
-	protected Creater(){
+	protected AbstractCreater(){
 		FileSystemView fsv = FileSystemView.getFileSystemView();
 		File desktop = fsv.getHomeDirectory();
 		configMap.put("filePath", desktop);

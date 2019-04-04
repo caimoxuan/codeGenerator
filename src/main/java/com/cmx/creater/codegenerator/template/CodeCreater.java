@@ -1,5 +1,6 @@
 package com.cmx.creater.codegenerator.template;
 
+import com.cmx.creater.codegenerator.common.GeneratorConfig;
 import com.cmx.creater.codegenerator.common.Table;
 
 import java.io.ByteArrayOutputStream;
@@ -15,6 +16,7 @@ public interface CodeCreater {
     /**
      * create all file for all tables
      * @param tables all database tables
+     * @return fileName -> fileInputStream
      */
     Map<String, ByteArrayOutputStream> createCode(List<Table> tables);
 
@@ -25,4 +27,10 @@ public interface CodeCreater {
      * @return file code
      */
     String createCodeWithTableName(List<Table> tables, String tableName);
+
+    /**
+     * config generator by user session
+     * @param config user config
+     */
+    void setGeneratorConfig(GeneratorConfig config);
 }

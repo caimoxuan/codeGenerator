@@ -1,5 +1,6 @@
 package com.cmx.creater.codegenerator.cache;
 
+import com.cmx.creater.codegenerator.common.GeneratorConfig;
 import com.cmx.creater.codegenerator.common.Table;
 import lombok.Data;
 import org.springframework.context.annotation.Scope;
@@ -26,5 +27,11 @@ public class SessionTableStore {
     private Connection cacheConnection;
 
     private HttpSession session;
+
+    private GeneratorConfig cacheConfig;
+
+    SessionTableStore(){
+        this.cacheConfig = new GeneratorConfig();
+    }
 
 }

@@ -3,10 +3,13 @@ package com.cmx.creater.codegenerator.template;
 
 import com.cmx.creater.codegenerator.utils.FileCreateUtil;
 
-public class BaseCreater extends Creater{
+/**
+ * @author cmx
+ */
+public class BaseAbstractCreater extends AbstractCreater {
 	
 	
-	public BaseCreater(){
+	public BaseAbstractCreater(){
 		configMap.put("basePackageName", "com.cmx");
 		configMap.put("basePath", "base");
 		configMap.put("createOverride", true);
@@ -24,9 +27,12 @@ public class BaseCreater extends Creater{
 			e.printStackTrace();
 		}
 	}
-	
-	
-	//生成Pageview 考虑是否生成mybtais拦截器
+
+
+	/**
+	 * mybatis interceptor page helper
+	 * @return
+	 */
 	public String createPageView(){
 		StringBuffer sb = new StringBuffer();
 		
@@ -48,8 +54,11 @@ public class BaseCreater extends Creater{
 		
 		return sb.toString();
 	}
-	
-	//创建baseService
+
+	/**
+	 * base service create
+	 * @return
+	 */
 	public String baseServiceCodeCreater(){
 		String packageName = configMap.get("basePackageName").toString().replace("\\", ".")+"."+configMap.get("basePath");
 		StringBuffer sb = new StringBuffer();
@@ -64,8 +73,11 @@ public class BaseCreater extends Creater{
 		
 		return sb.toString();
 	}
-	
-	//创建baseServiceImpl
+
+	/**
+	 * base serviceImpl
+	 * @return
+	 */
 	public String baseServiceImplCodeCreater(){
 		String packageName = configMap.get("basePackageName").toString().replace("\\", ".")+"."+configMap.get("basePath");
 		boolean createOverride = Boolean.parseBoolean(configMap.get("createOverride").toString());

@@ -6,10 +6,22 @@ package com.cmx.creater.codegenerator.exception;
  */
 public interface BaseException {
 
+    /**
+     * get exp code
+     * @return
+     */
     String getCode();
 
+    /**
+     * get exp message
+     * @return
+     */
     String getMessage();
 
+    /**
+     * get HttpStatus
+     * @return
+     */
     int getStatus();
 
 }

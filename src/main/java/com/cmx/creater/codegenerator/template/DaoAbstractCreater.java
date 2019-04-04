@@ -13,8 +13,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author cmx
+ */
 @Slf4j
-public class DaoCreater extends Creater implements CodeCreater{
+public class DaoAbstractCreater extends AbstractCreater implements CodeCreater{
 
 	@Override
 	public Map<String, ByteArrayOutputStream> createCode(List<Table> tables) {

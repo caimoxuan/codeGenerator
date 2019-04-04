@@ -3,15 +3,15 @@ package com.cmx.creater.codegenerator.template;
 
 import com.cmx.creater.codegenerator.common.Table;
 import com.cmx.creater.codegenerator.utils.FileCreateUtil;
-import com.cmx.creater.codegenerator.utils.NameUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-
-public class ServiceCreater extends Creater implements CodeCreater{
+/**
+ * @author cmx
+ */
+public class ServiceAbstractCreater extends AbstractCreater implements CodeCreater{
 
 
 
@@ -39,8 +39,12 @@ public class ServiceCreater extends Creater implements CodeCreater{
  		sb.append("\n}");
  		return sb.toString();
 	}
-	
-	//使用spring的Service声明
+
+	/**
+	 * service create
+	 * @param beanName
+	 * @return
+	 */
 	public String createServiceImpl(String beanName){
 		String packageName = configMap.get("basePackageName").toString().replace("\\", ".") + "." + configMap.get("servicePath");
 		String beanPath = configMap.get("basePackageName").toString().replace("\\", ".") + "." + configMap.get("beanPath").toString();

@@ -40,7 +40,7 @@ public class TableInfoRepository {
 
                 Table table = new Table(tableName);
                 ResultSet colRet = dbMetData.getColumns(connection.getCatalog(), "%", tableName, "%");
-                Map<String, Column> columns = new HashMap<>();
+                Map<String, Column> columns = new HashMap<>(16);
                 //根据表名提取表信息
                 while (colRet.next()) {
                     String columnName = colRet.getString("COLUMN_NAME");

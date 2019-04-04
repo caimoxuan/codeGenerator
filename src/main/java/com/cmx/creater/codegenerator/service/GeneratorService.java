@@ -7,7 +7,6 @@ import com.cmx.creater.codegenerator.exception.GeneratorException;
 import com.cmx.creater.codegenerator.exception.enums.ExceptionEnum;
 import com.cmx.creater.codegenerator.manager.GenerateManager;
 import com.cmx.creater.codegenerator.template.CodeCreater;
-import com.cmx.creater.codegenerator.template.MapperCreater;
 import com.cmx.creater.codegenerator.template.factory.CreaterFactory;
 import com.cmx.creater.codegenerator.utils.ZipUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -50,6 +49,9 @@ public class GeneratorService {
             throw new GeneratorException(ExceptionEnum.SYSTEM_ERROR);
         }
 
+        codeCreater.setGeneratorConfig(store.getCacheConfig());
+
+
         return codeCreater.createCodeWithTableName(store.getCacheTables(), tableName);
     }
 
@@ -60,13 +62,14 @@ public class GeneratorService {
             return null;
         }
 
-        Map<String, ByteArrayOutputStream> resultMap = new HashMap<>();
+        Map<String, ByteArrayOutputStream> resultMap = new HashMap<>(16);
 
         for(Class clazz : filters){
             CodeCreater codeCreater = CreaterFactory.getCodeCreater(clazz);
             if(codeCreater == null){
                 continue;
             }
+            codeCreater.setGeneratorConfig(store.getCacheConfig());
             Map<String, ByteArrayOutputStream> codeMap = codeCreater.createCode(store.getCacheTables());
             resultMap.putAll(codeMap);
         }

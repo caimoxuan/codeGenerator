@@ -44,8 +44,23 @@ public class GeneratorConfig {
         this.mapperPath = resourcePath + ".mapper";
         this.domainPath = basePackageName + ".domain";
         this.servicePath = basePackageName + ".service";
-        this.basePath = basePackageName + "base";
+        this.basePath = basePackageName + ".base";
         this.lombokEnable = true;
     }
 
+    public void setDaoPath(String dapPath){
+        this.daoPath = basePackageName + "." + dapPath;
+    }
+
+    public void setMapperPath(String mapperPath){
+        this.mapperPath = resourcePath + "." + mapperPath;
+    }
+
+    public void setDomainPath(String domainPath){
+        this.domainPath = basePackageName + "." + domainPath;
+    }
+
+    public void setServicePath(String servicePath){
+        this.servicePath = basePackageName + "." + servicePath;
+    }
 }

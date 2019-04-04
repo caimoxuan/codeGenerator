@@ -2,7 +2,6 @@ package com.cmx.creater.codegenerator.template;
 
 import com.cmx.creater.codegenerator.common.Column;
 import com.cmx.creater.codegenerator.common.Table;
-import com.cmx.creater.codegenerator.utils.FileCreateUtil;
 import com.cmx.creater.codegenerator.utils.NameUtil;
 import com.cmx.creater.codegenerator.utils.SqlTypeUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +14,11 @@ import java.util.List;
 import java.util.Map;
 
 
+/**
+ * @author cmx
+ */
 @Slf4j
-public class MapperCreater extends Creater implements CodeCreater{
+public class MapperAbstractCreater extends AbstractCreater implements CodeCreater{
 
 
 	@Override
