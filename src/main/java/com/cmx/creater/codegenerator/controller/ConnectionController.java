@@ -36,7 +36,7 @@ public class ConnectionController {
 
     @RequestMapping(value = "/getTables", method = RequestMethod.GET)
     public ApiResult<List<TableVO>> getTables(@RequestParam String host, @RequestParam String userName,
-                                              @RequestParam String password, @RequestParam Integer port,
+                                              @RequestParam String password, Integer port,
                                               @RequestParam String database, HttpServletRequest request){
         log.info("get connect request : {},{},{},{}", host , userName, port, database);
         ApiResult<List<TableVO>> result = new ApiResult<>();
@@ -46,7 +46,7 @@ public class ConnectionController {
         model.setDatabase(database);
         model.setUserName(userName);
         model.setPassword(password);
-        model.setPort(port);
+        model.setPort(port == null ? 3306 : port);
         try {
             List<Table> tables = generatorService.getTables(model, null);
             sessionTableStore.setSession(request.getSession());

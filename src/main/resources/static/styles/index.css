@@ -1,0 +1,15 @@
+.mysql_table {
+    width: 90%;
+    height: 0px;
+    padding-bottom: 90%;
+    margin: 0px auto;
+    vertical-align: middle;
+    border: 1px solid black;
+}
+
+
+
+
+.margin_top_15 {
+    margin-top: 15px;
+}
