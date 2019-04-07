@@ -111,9 +111,10 @@
             },
             success: function (data) {
                 if (data.data) {
+                    $(".table_content").empty();
                     data.data.map(function (table) {
                         var table = $("<div class='col-lg-2 margin_top_15'>" +
-                            "<div class='mysql_table'><p>" + table.tableName + "</p></div>"
+                            "<div class='mysql_table'><div class='table_context'>" + table.tableName + "</div></div>"
                             + "</div>");
                         $(".table_content").append(table);
                     });
