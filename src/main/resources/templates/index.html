@@ -99,6 +99,12 @@
 </div>
 </body>
 <script>
+    $(function(){
+        var data = localStorage.getItem("tableList");
+        if(data){
+            drawTableList(JSON.parse(data));
+        }
+    })
 
     function getConnection() {
         $.ajax({
@@ -111,15 +117,10 @@
             },
             success: function (data) {
                 if (data.data) {
-                    $(".table_content").empty();
-                    data.data.map(function (table) {
-                        var table = $("<div class='col-lg-2 margin_top_15'>" +
-                            "<div class='mysql_table'><div class='table_context'>" + table.tableName + "</div></div>"
-                            + "</div>");
-                        $(".table_content").append(table);
-                    });
+                    drawTableList(data.data);
+                    localStorage.setItem("tableList", JSON.stringify(data.data));
                 } else {
-                    console.log(data.message);
+                    alert(data.message);
                 }
             },
             error: function (err) {
@@ -127,6 +128,21 @@
                 alert("出错了");
             }
         });
+    }
+
+    function drawTableList(data){
+        $(".table_content").empty();
+        data.map(function (table) {
+            var table = $("<div class='col-lg-2 margin_top_15'>" +
+                "<div class='mysql_table' onclick='clickTable(\""+ table.tableName + "\")'><div class='table_context'>" + table.tableName + "</div></div>"
+                + "</div>");
+            $(".table_content").append(table);
+        });
+    }
+
+    function clickTable(tableName) {
+        var url = "/pages/tableDetail?tableName=" + tableName;
+        window.location = url;
     }
 
 </script>

@@ -46,14 +46,20 @@ public class ConfigController {
     }
 
 
-    @RequestMapping(value = "/defaultConfig", method = RequestMethod.GET)
+    @RequestMapping(value = "/conf", method = RequestMethod.GET)
     public ApiResult<DefaultConfigVO> defaultConfig(){
 
         ApiResult<DefaultConfigVO> result = new ApiResult<>();
 
+        DefaultConfigVO defaultConfigVO = new DefaultConfigVO();
+
         GeneratorConfig config = new GeneratorConfig();
 
-        DefaultConfigVO defaultConfigVO = new DefaultConfigVO();
+        if(sessionTableStore.getCacheConfig() != null){
+            GeneratorConfig cacheConfig = sessionTableStore.getCacheConfig();
+            BeanUtils.copyProperties(cacheConfig, defaultConfigVO);
+            return result.successResult(defaultConfigVO);
+        }
 
         BeanUtils.copyProperties(config, defaultConfigVO);
 

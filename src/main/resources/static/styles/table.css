@@ -1,0 +1,15 @@
+.table_detail {
+    width: 30%;
+    height: 100%;
+    border: 1px solid black;
+    float: left;
+    margin-left: 5%;
+}
+
+.table_code {
+    width: 60%;
+    height: 100%;
+    border:1px dashed;
+    float: left;
+    margin-left: 5%;
+}

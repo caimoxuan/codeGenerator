@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>table detail</title>
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/normalize.css"/>
+
+    <link rel="stylesheet" href="/styles/table.css"/>
+
 </head>
 <body>
+<!-- START table info div -->
+<div class = "table_detail">
+
+</div>
+<!-- END table info div -->
+<!-- START table create code -->
+<div class ="table_code" >
+    <div class = "code_type_radio" ></div>
+    <pre class="code_content"></pre>
+</div>
+<!-- END table create code -->
 
 </body>
+
+<script type="text/javascript" >
+    $(function(){
+        $(".code_content").val("");
+
+        $.ajax({
+            type: "get",
+            dataType: "json",
+            url: "/config/createType",
+            success: function (data) {
+                if (data.data) {
+                    createType(data.data);
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+                alert("出错了");
+            }
+        });
+    });
+
+    function createType(data){
+        $(".code_type_radio").empty();
+        data.map(function(val){
+            var dom = $("<input type='radio' name='createType' value='"+ val +"' >" + val);
+            $(".code_type_radio").append(dom);
+            $(".code_type_radio").append(val);
+        });
+    }
+
+</script>
 </html>
