@@ -38,7 +38,11 @@ public class GeneratorService {
 
     public String generateOneSimpleFileContent(String tableName, SessionTableStore store, Class clazz){
 
-        if(store.getCacheTables() == null || store.getCacheTables().size() < 1){
+        if(store.getCacheTables() == null){
+            throw new GeneratorException(ExceptionEnum.NOT_CONFIG_CONNECT);
+        }
+
+        if(store.getCacheTables().size() < 1){
             return null;
         }
 

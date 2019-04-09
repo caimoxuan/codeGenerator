@@ -38,6 +38,10 @@ public class GenerateManager {
             } catch (SQLException e) {
                 log.error("get table message error : {}", e);
                 throw new GeneratorException(ExceptionEnum.SQL_MESSAGE_ERROR);
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException e) {}
             }
         }
 

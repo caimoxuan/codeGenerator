@@ -19,6 +19,9 @@ public enum ExceptionEnum implements BaseException{
     SQL(HttpStatus.INTERNAL_SERVER_ERROR, "20003", "数据库连接出错"),
     SQL_MESSAGE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "20010", "获取数据库信息异常"),
 
+    /** 配置异常 */
+    NOT_CONFIG_CONNECT(HttpStatus.NOT_FOUND, "30000", "数据库连接未配置"),
+
     /**其他异常 */
     SELECT_NULL_ERROR(HttpStatus.BAD_REQUEST, "40001", "未选择的参数");
 

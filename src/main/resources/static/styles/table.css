@@ -1,15 +1,185 @@
 .table_detail {
-    width: 30%;
+    width: 20%;
     height: 100%;
     border: 1px solid black;
+    border-radius: 5px;
     float: left;
-    margin-left: 5%;
+}
+
+table {
+    width: 100%;
+    border: 1px solid gainsboro;
 }
 
 .table_code {
     width: 60%;
-    height: 100%;
-    border:1px dashed;
+    height: 99%;
     float: left;
-    margin-left: 5%;
+}
+
+.code_type_radio{
+    width: 15%;
+    height: 100%;
+    float: left;
+    margin: 0 2.5% 0 2.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+pre {
+    height: 100%;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    white-space: pre;
+    word-wrap: normal;
+}
+
+.radio_button {
+    display: none;
+}
+
+.radio_button:checked~.radio_text:before{
+    display: block;
+}
+
+.radio_text {
+    display: inline-block;
+    border:1px solid #ccc;
+    width:16px;
+    height: 16px;
+    border-radius:2px;
+    vertical-align: middle;
+    margin-right: 5px;
+    position: relative;
+}
+
+.radio_text:before{
+    content: '';
+    font-size: 0;
+    width: 10px;
+    height: 10px;
+    background: rgb(143, 188, 238);
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left: -5px;
+    margin-top: -5px;
+    border-radius: 2px;
+    display: none;
+}
+
+.btn {
+    position: relative;
+    top: 3px;
+    padding:3px;
+}
+
+/** black */
+
+#code_text {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #23241f !important;
+    color: #FFF;
+    white-space: pre;
+    word-break: normal;
+}
+
+.hljs,
+.hljs-tag,
+.hljs-subst {
+    color: #f8f8f2;
+}
+
+.hljs-strong,
+.hljs-emphasis {
+    color: #a8a8a2;
+}
+
+.hljs-bullet,
+.hljs-quote,
+.hljs-number,
+.hljs-regexp,
+.hljs-literal,
+.hljs-link {
+    color: #ae81ff;
+}
+
+.hljs-code,
+.hljs-title,
+.hljs-section,
+.hljs-selector-class {
+    color: #a6e22e;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-name,
+.hljs-attr {
+    color: #f92672;
+}
+
+.hljs-symbol,
+.hljs-attribute {
+    color: #66d9ef;
+}
+
+.hljs-params,
+.hljs-class .hljs-title {
+    color: #f8f8f2;
+}
+
+.hljs-string,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-selector-id,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-variable {
+    color: #e6db74;
+}
+
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta {
+    color: #75715e;
+}
+
+/** scroll */
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+    width: 10px;
+    height: 10px;
+    background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
 }
