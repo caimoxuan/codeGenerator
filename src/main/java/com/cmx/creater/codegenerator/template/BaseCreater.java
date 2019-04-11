@@ -6,10 +6,10 @@ import com.cmx.creater.codegenerator.util.FileCreateUtil;
 /**
  * @author cmx
  */
-public class BaseAbstractCreater extends AbstractCreater {
+public class BaseCreater extends AbstractCreater {
 	
 	
-	public BaseAbstractCreater(){
+	public BaseCreater(){
 		configMap.put("basePackageName", "com.cmx");
 		configMap.put("basePath", "base");
 		configMap.put("createOverride", true);

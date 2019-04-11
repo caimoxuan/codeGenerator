@@ -17,7 +17,7 @@ import java.util.Map;
  * @author cmx
  */
 @Slf4j
-public class BeanAbstractCreater extends AbstractCreater implements CodeCreater {
+public class BeanCreater extends AbstractCreater implements CodeCreater {
 
     @Override
     public Map<String, ByteArrayOutputStream> createCode(List<Table> tables) {

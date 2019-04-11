@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * @author cmx
  */
-public class ServiceAbstractCreater extends AbstractCreater implements CodeCreater{
+public class ServiceCreater extends AbstractCreater implements CodeCreater{
 
 
 

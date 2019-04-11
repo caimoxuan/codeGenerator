@@ -1,8 +1,8 @@
 package com.cmx.creater.codegenerator.enums;
 
-import com.cmx.creater.codegenerator.template.BeanAbstractCreater;
-import com.cmx.creater.codegenerator.template.DaoAbstractCreater;
-import com.cmx.creater.codegenerator.template.MapperAbstractCreater;
+import com.cmx.creater.codegenerator.template.BeanCreater;
+import com.cmx.creater.codegenerator.template.DaoCreater;
+import com.cmx.creater.codegenerator.template.MapperCreater;
 import lombok.Getter;
 
 /**
@@ -15,11 +15,11 @@ public enum CodeCreateType {
     /**
      * index , create type, class type
      */
-    BEAN_CREATE(0, "bean", BeanAbstractCreater.class),
+    BEAN_CREATE(0, "bean", BeanCreater.class),
 
-    DAO_CREATE(1, "dao", DaoAbstractCreater.class),
+    DAO_CREATE(1, "dao", DaoCreater.class),
 
-    MAPPER_CREATE(2, "mapper", MapperAbstractCreater.class);
+    MAPPER_CREATE(2, "mapper", MapperCreater.class);
 
     private int code;
 

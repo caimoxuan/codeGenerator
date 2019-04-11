@@ -5,9 +5,9 @@ import com.cmx.creater.codegenerator.common.ApiResult;
 import com.cmx.creater.codegenerator.enums.CodeCreateType;
 import com.cmx.creater.codegenerator.exception.GeneratorException;
 import com.cmx.creater.codegenerator.service.GeneratorService;
-import com.cmx.creater.codegenerator.template.BeanAbstractCreater;
-import com.cmx.creater.codegenerator.template.DaoAbstractCreater;
-import com.cmx.creater.codegenerator.template.MapperAbstractCreater;
+import com.cmx.creater.codegenerator.template.BeanCreater;
+import com.cmx.creater.codegenerator.template.DaoCreater;
+import com.cmx.creater.codegenerator.template.MapperCreater;
 import com.cmx.creater.codegenerator.util.HtmlCodeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +43,7 @@ public class CodeCreateController {
 
         ApiResult<String> result = new ApiResult<>();
         try {
-            String content = generatorService.generateOneSimpleFileContent(tableName, sessionTableStore, MapperAbstractCreater.class);
+            String content = generatorService.generateOneSimpleFileContent(tableName, sessionTableStore, MapperCreater.class);
             return result.successResult(HtmlCodeUtil.parseXmlCode(content));
         }catch (GeneratorException e){
            return result.failResult(e);
@@ -57,7 +57,7 @@ public class CodeCreateController {
 
         ApiResult<String> result = new ApiResult<>();
         try {
-            String content = generatorService.generateOneSimpleFileContent(tableName, sessionTableStore, BeanAbstractCreater.class);
+            String content = generatorService.generateOneSimpleFileContent(tableName, sessionTableStore, BeanCreater.class);
             return result.successResult(HtmlCodeUtil.parseCodeToHtml(content));
         }catch (GeneratorException e){
             return result.failResult(e);
@@ -70,7 +70,7 @@ public class CodeCreateController {
 
         ApiResult<String> result = new ApiResult<>();
         try {
-            String content = generatorService.generateOneSimpleFileContent(tableName, sessionTableStore, DaoAbstractCreater.class);
+            String content = generatorService.generateOneSimpleFileContent(tableName, sessionTableStore, DaoCreater.class);
             return result.successResult(HtmlCodeUtil.parseCodeToHtml(content));
         }catch (GeneratorException e){
             return result.failResult(e);

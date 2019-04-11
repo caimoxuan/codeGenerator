@@ -13,9 +13,9 @@ import java.net.URLDecoder;
 /**
  * @author cmx
  */
-public class MvcAbstractCreater extends AbstractCreater {
+public class MvcCreater extends AbstractCreater {
 	
-	public MvcAbstractCreater(){
+	public MvcCreater(){
 		super();
 		configMap.put("basePackageName", "com.cmx");
 	}

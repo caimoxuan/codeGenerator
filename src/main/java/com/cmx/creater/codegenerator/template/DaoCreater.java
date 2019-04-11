@@ -17,7 +17,7 @@ import java.util.Map;
  * @author cmx
  */
 @Slf4j
-public class DaoAbstractCreater extends AbstractCreater implements CodeCreater{
+public class DaoCreater extends AbstractCreater implements CodeCreater{
 
 	@Override
 	public Map<String, ByteArrayOutputStream> createCode(List<Table> tables) {

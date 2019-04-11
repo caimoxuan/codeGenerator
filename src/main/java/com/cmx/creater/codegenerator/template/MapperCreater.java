@@ -18,7 +18,7 @@ import java.util.Map;
  * @author cmx
  */
 @Slf4j
-public class MapperAbstractCreater extends AbstractCreater implements CodeCreater{
+public class MapperCreater extends AbstractCreater implements CodeCreater{
 
 
 	@Override
