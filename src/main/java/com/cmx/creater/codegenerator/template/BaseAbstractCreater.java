@@ -1,7 +1,7 @@
 package com.cmx.creater.codegenerator.template;
 
 
-import com.cmx.creater.codegenerator.utils.FileCreateUtil;
+import com.cmx.creater.codegenerator.util.FileCreateUtil;
 
 /**
  * @author cmx

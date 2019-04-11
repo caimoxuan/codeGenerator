@@ -1,4 +1,4 @@
-package com.cmx.creater.codegenerator.utils;
+package com.cmx.creater.codegenerator.util;
 
 import java.io.*;
 import java.nio.charset.Charset;

@@ -1,4 +1,4 @@
-package com.cmx.creater.codegenerator.utils;
+package com.cmx.creater.codegenerator.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

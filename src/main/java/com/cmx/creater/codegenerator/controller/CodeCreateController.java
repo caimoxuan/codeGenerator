@@ -8,7 +8,7 @@ import com.cmx.creater.codegenerator.service.GeneratorService;
 import com.cmx.creater.codegenerator.template.BeanAbstractCreater;
 import com.cmx.creater.codegenerator.template.DaoAbstractCreater;
 import com.cmx.creater.codegenerator.template.MapperAbstractCreater;
-import com.cmx.creater.codegenerator.utils.HtmlCodeUtil;
+import com.cmx.creater.codegenerator.util.HtmlCodeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -79,7 +79,7 @@ public class CodeCreateController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public void getZipCode(HttpServletResponse response, @RequestParam(value = "types") List<String> types){
-        log.info("get zipCode request, {}", types.toArray());
+        log.info("get zipCode request, {}", types.size());
         List<Class> classes = new ArrayList<>();
 
         if(types.size() < 1){
@@ -96,9 +96,13 @@ public class CodeCreateController {
         InputStream zipCode = null;
         ServletOutputStream outputStream = null;
 
-        response.setHeader("Content-Disposition", "attachment; filename=code.zip");
         try {
             zipCode = generatorService.getZipCode(sessionTableStore, classes);
+            if(zipCode == null){
+                log.warn("get zip stream fail");
+                return;
+            }
+            response.setHeader("Content-Disposition", "attachment; filename=code.zip");
             outputStream = response.getOutputStream();
             byte[] bytes = new byte[1024];
             int index;

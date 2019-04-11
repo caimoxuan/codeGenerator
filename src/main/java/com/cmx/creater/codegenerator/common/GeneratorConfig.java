@@ -49,18 +49,30 @@ public class GeneratorConfig {
     }
 
     public void setDaoPath(String dapPath){
-        this.daoPath = basePackageName + "." + dapPath;
+        if(dapPath == null){
+            return;
+        }
+        this.daoPath = basePackageName + "." + dapPath.substring(daoPath.lastIndexOf(".") + 1);
     }
 
     public void setMapperPath(String mapperPath){
-        this.mapperPath = resourcePath + "." + mapperPath;
+        if(mapperPath == null){
+            return;
+        }
+        this.mapperPath = resourcePath + "." + mapperPath.substring(mapperPath.lastIndexOf(".") + 1);
     }
 
     public void setDomainPath(String domainPath){
-        this.domainPath = basePackageName + "." + domainPath;
+        if(domainPath == null){
+            return;
+        }
+        this.domainPath = basePackageName + "." + domainPath.substring(domainPath.lastIndexOf(".") + 1);
     }
 
     public void setServicePath(String servicePath){
-        this.servicePath = basePackageName + "." + servicePath;
+        if(servicePath == null){
+            return;
+        }
+        this.servicePath = basePackageName + "." + servicePath.substring(servicePath.lastIndexOf(".") + 1);
     }
 }

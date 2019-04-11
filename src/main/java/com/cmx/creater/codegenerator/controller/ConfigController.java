@@ -74,7 +74,13 @@ public class ConfigController {
 
         GeneratorConfig generatorConfig = new GeneratorConfig();
 
-        BeanUtils.copyProperties(config, generatorConfig);
+        generatorConfig.setBasePackageName(config.getBasePackageName());
+        generatorConfig.setDaoSuffix(config.getDaoSuffix());
+        generatorConfig.setMapperPath(config.getMapperPath());
+        generatorConfig.setDomainPath(config.getDomainPath());
+        generatorConfig.setServicePath(config.getServicePath());
+        generatorConfig.setDaoPath(config.getDaoPath());
+        generatorConfig.setLombokEnable(config.getLombokEnable());
 
         sessionTableStore.setCacheConfig(generatorConfig);
 

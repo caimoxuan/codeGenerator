@@ -22,7 +22,7 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li><a href="#" data-toggle="modal" data-target="#connectModal">连接配置</a></li>
-                    <li><a href="#">规则配置</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#configModal">规则配置</a></li>
                     <li><a href="#">帮助</a></li>
                 </ul>
             </div>
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label" for="port">host:</label>
+                            <label class="col-sm-2 control-label" for="port">port:</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="port" id="port"
                                        placeholder="public host like rds">
@@ -92,6 +92,58 @@
         </div>
     </div>
     <!-- END modal -->
+
+    <!-- START config modal -->
+    <div class="modal fade" id="configModal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h5 class="modal-title" id="configModalLabel">
+                        设置基本配置
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" id="configForm" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="basePackageName">包名:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="basePackageName" id="basePackageName"
+                                       value="com.code.generator">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="daoSuffix">dao后缀:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="daoSuffix" id="daoSuffix" value="Mapper">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="lombokEnable">启用lombok:</label>
+                            <div class="col-sm-10">
+                                <label id="lombokEnable">
+                                    <input type="radio" name="lombokEnable" value="true" checked="checked">是&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="lombokEnable" value="false">否
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="configCache()">
+                        确定
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END config modal -->
+
     <!-- START table content -->
     <div class="table_content">
     </div>
@@ -99,12 +151,36 @@
 </div>
 </body>
 <script>
-    $(function(){
+    $(function () {
         var data = localStorage.getItem("tableList");
-        if(data){
+        if (data) {
             drawTableList(JSON.parse(data));
         }
-    })
+    });
+
+    function configCache() {
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "/config/cache",
+            data: JSON.stringify({
+                basePackageName: $("#basePackageName").val(), daoSuffix: $("#daoSuffix").val(),
+                lombokEnable: $("[name='lombokEnable']:checked").val()
+            }),
+            success: function (data) {
+                if (data.data) {
+                    console.log("success config cache");
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+                alert("出错了");
+            }
+        });
+    }
 
     function getConnection() {
         $.ajax({
@@ -130,11 +206,11 @@
         });
     }
 
-    function drawTableList(data){
+    function drawTableList(data) {
         $(".table_content").empty();
         data.map(function (table) {
             var table = $("<div class='col-lg-2 margin_top_15'>" +
-                "<div class='mysql_table' onclick='clickTable(\""+ table.tableName + "\")'><div class='table_context'>" + table.tableName + "</div></div>"
+                "<div class='mysql_table' onclick='clickTable(\"" + table.tableName + "\")'><div class='table_context'>" + table.tableName + "</div></div>"
                 + "</div>");
             $(".table_content").append(table);
         });

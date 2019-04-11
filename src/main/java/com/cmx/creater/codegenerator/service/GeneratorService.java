@@ -8,7 +8,7 @@ import com.cmx.creater.codegenerator.exception.enums.ExceptionEnum;
 import com.cmx.creater.codegenerator.manager.GenerateManager;
 import com.cmx.creater.codegenerator.template.CodeCreater;
 import com.cmx.creater.codegenerator.template.factory.CreaterFactory;
-import com.cmx.creater.codegenerator.utils.ZipUtil;
+import com.cmx.creater.codegenerator.util.ZipUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -35,5 +35,16 @@ public class DefaultConfigVO {
      */
     private Boolean lombokEnable;
 
+    public DefaultConfigVO () {
+        this.basePackageName = "com.code.generator";
+        this.resourcePath = "resource";
+        this.daoPath = basePackageName + ".mapper";
+        this.daoSuffix = "Mapper";
+        this.mapperPath = resourcePath + ".mapper";
+        this.domainPath = basePackageName + ".domain";
+        this.servicePath = basePackageName + ".service";
+        this.basePath = basePackageName + ".base";
+        this.lombokEnable = true;
+    }
 
 }

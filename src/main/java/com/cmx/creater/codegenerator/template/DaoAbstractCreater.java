@@ -3,8 +3,8 @@ package com.cmx.creater.codegenerator.template;
 
 import com.cmx.creater.codegenerator.common.Column;
 import com.cmx.creater.codegenerator.common.Table;
-import com.cmx.creater.codegenerator.utils.NameUtil;
-import com.cmx.creater.codegenerator.utils.SqlTypeUtil;
+import com.cmx.creater.codegenerator.util.NameUtil;
+import com.cmx.creater.codegenerator.util.SqlTypeUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayOutputStream;
