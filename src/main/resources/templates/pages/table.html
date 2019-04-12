@@ -18,30 +18,44 @@
 
 </head>
 <body>
-<!-- START table info div -->
-<div class="table_detail">
-    <table id = "table_info" class="table_info">
-        <tr>
-            <th>column</th>
-            <th>type</th>
-            <th>size</th>
-            <th>remark</th>
-        </tr>
-    </table>
-</div>
-<!-- END table info div -->
-<!-- START table create code -->
-<div class="code_type_radio">
-</div>
-<div class="table_code">
+
+<!-- START 导航条 -->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Code Generator</a>
+        </div>
+    </div>
+</nav>
+<!-- END -->
+<div style="height:90%">
+
+    <!-- START table info div -->
+    <div class="table_detail">
+        <table id="table_info" class="table_info">
+            <tr>
+                <th>column</th>
+                <th>type</th>
+                <th>size</th>
+                <th>remark</th>
+            </tr>
+        </table>
+    </div>
+    <!-- END table info div -->
+    <!-- START table create code -->
+    <div class="code_type_radio">
+    </div>
+    <div class="table_code">
     <pre id="code_content" class="code_content">
         <button class="btn" data-clipboard-action="copy" data-clipboard-target="#code_text">
-            <img src="data:image/svg+xml;base64,CjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDEwMDAgMTAwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTAwMCAxMDAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPG1ldGFkYXRhPiDnn6Lph4/lm77moIfkuIvovb0gOiBodHRwOi8vd3d3LnNmb250LmNuLyA8L21ldGFkYXRhPjxnPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLDUxMS4wMDAwMDApIHNjYWxlKDAuMTAwMDAwLC0wLjEwMDAwMCkiPjxwYXRoIGQ9Ik0yOTQ2LjIsNDk3NC43Yy01Ny40LTE5LjgtMTM2LjUtNTcuNC0xNzYuMS04MS4xYy0xMDIuOS02My4zLTE3NzYuOC0xOTgyLjYtMTgzNi4yLTIxMDUuM0M4MjEuMSwyNTU0LjgsODI1LjEsMjY3MS41LDgyNS4xLTYxdi0yNTE0LjlsNDUuNS04Ny4xYzI1LjctNTEuNCw3MS4yLTEwNC45LDExMi44LTEyOC42YzY1LjMtMzcuNiwxMDguOC0zOS42LDg3Ni41LTQ1LjVsODA1LjMtNS45djQ5Ni42djQ5NC43aC00NTMuMWMtNDM1LjMsMC00NTMuMSwyLTUxOC40LDQ1LjVjLTE0Ni40LDk3LTEzNi41LTQzLjUtMTM2LjUsMjEzMWMwLDE4NTkuOSwyLDE5NTIuOSwzNy42LDIwMzAuMWMyNy43LDYxLjMsNTkuNCw5MywxMjQuNywxMjQuNmM4My4xLDM5LjYsMTE2LjcsNDEuNiw1NjcuOSw0MS42YzcwNi40LDAsNjc0LjctMzUuNiw2NzQuNyw3NzkuNmMwLDUyOC4zLDAsNTQyLjEsNDUuNSw2MDcuNGM5NSwxNDIuNSwyMS44LDEzNi41LDE1NjcuMSwxMzYuNWMxMzA3LjksMCwxMzg5LTIsMTQ2Ni4yLTM3LjZjMTA2LjktNDcuNSwxNjYuMi0xNjYuMiwxNjYuMi0zMjQuNXYtMTEyLjhoMzY4aDM2NmwtNS45LDYwOS40Yy01LjksNTY1LjktNy45LDYxMS40LTQ1LjUsNjc0LjdjLTIxLjgsMzcuNi02NS4zLDg1LjEtOTUsMTA4LjhjLTU1LjQsNDEuNi01OS40LDQxLjYtMTg5OS41LDQ1LjVDMzEyNC4zLDUwMTIuMywzMDQ3LjEsNTAxMi4zLDI5NDYuMiw0OTc0Ljd6IiBzdHlsZT0iZmlsbDojYTliN2I3Ij48L3BhdGg+PHBhdGggZD0iTTUyODEsMzAzNS42Yy05OC45LTIxLjgtMjcxLjEtMTA0LjktMzM4LjQtMTY0LjJjLTExMi44LTEwMi45LTE3MTMuNS0xOTQ3LTE3NTMuMS0yMDIwLjJjLTI1LjctNDUuNS02MS4zLTEzMC42LTgxLjEtMTkwYy0zNS42LTEwNC45LTM3LjYtMjIzLjYtMzcuNi0yNjcxLjJjMC0yNTI2LjcsMC0yNTYyLjQsMzkuNi0yNjI5LjZjMjEuOC0zNy42LDY1LjMtODUuMSw5NS0xMDguOGw1NS40LTQxLjVINjExOGMyODUzLjIsMCwyODU3LjIsMCwyOTEwLjYsNDEuNWMyOS43LDIxLjgsNzMuMiw2NS4zLDk1LDk1bDQxLjUsNTMuNGw1LjksMzY5NC4ybDQsMzY5NC4ybC00My41LDg5Yy0yNy43LDUxLjUtNzMuMiwxMDQuOS0xMTQuOCwxMjguNmMtNjcuMywzOS42LTEwMC45LDM5LjYtMTg1OS45LDQzLjVDNjE3MS40LDMwNDkuNCw1MzI4LjUsMzA0My41LDUyODEsMzAzNS42eiBNODMzNCwyMDA2LjdjMTE0LjgtMTA0LjksMTA4LjgsNTEuNCwxMDguOC0yODgyLjljMC0yNjM3LjUtMi0yNzA4LjgtMzkuNi0yNzkxLjljLTI5LjctNjUuMy01Ny40LTkzLTEyMi43LTEyMi43Yy04My4xLTM3LjYtMTQ2LjQtMzkuNi0yMTYyLjctMzkuNnMtMjA3OS42LDItMjE2Mi43LDM5LjZjLTY1LjMsMjkuNy05Myw1Ny40LTEyNC43LDEyNi43Yy0zNy42LDg3LTM3LjYsMTMyLjUtMzMuNiwyMDUzLjhsNS45LDE5NjQuOGw0NS41LDY1LjNjNzkuMSwxMTAuOCw5MSwxMTIuOCw2NTEsMTIyLjdjNzM2LDEzLjksNjk4LjUtMjcuNyw2OTguNSw3NzEuN2MwLDYwMS41LDUuOSw2MzEuMiwxMjguNiw3MTIuM2M1Ny40LDM5LjYsOTEsMzkuNiwxNTA3LjcsMzUuNmwxNDQ2LjQtNS45TDgzMzQsMjAwNi43eiIgc3R5bGU9ImZpbGw6I2E5YjdiNyI+PC9wYXRoPjxwYXRoIGQ9Ik00NjI0LjEtMjk4LjV2LTMwNi43SDYxMThoMTQ5My45djMwNi43VjguMkg2MTE4SDQ2MjQuMVYtMjk4LjV6IiBzdHlsZT0iZmlsbDojYTliN2I3Ij48L3BhdGg+PHBhdGggZD0iTTQ2MjQuMS0xNDI2LjNWLTE3MzNINjExOGgxNDkzLjl2MzA2Ljd2MzA2LjdINjExOEg0NjI0LjFWLTE0MjYuM3oiIHN0eWxlPSJmaWxsOiNhOWI3YjciPjwvcGF0aD48cGF0aCBkPSJNNDYyNC4xLTI1NDQuMlYtMjg0MUg2MTE4aDE0OTMuOXYyOTYuOHYyOTYuOEg2MTE4SDQ2MjQuMVYtMjU0NC4yeiIgc3R5bGU9ImZpbGw6I2E5YjdiNyI+PC9wYXRoPjwvZz48L2c+PC9zdmc+ICA=" width="16" height="16">
+            <img src="data:image/svg+xml;base64,CjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDEwMDAgMTAwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTAwMCAxMDAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPG1ldGFkYXRhPiDnn6Lph4/lm77moIfkuIvovb0gOiBodHRwOi8vd3d3LnNmb250LmNuLyA8L21ldGFkYXRhPjxnPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLDUxMS4wMDAwMDApIHNjYWxlKDAuMTAwMDAwLC0wLjEwMDAwMCkiPjxwYXRoIGQ9Ik0yOTQ2LjIsNDk3NC43Yy01Ny40LTE5LjgtMTM2LjUtNTcuNC0xNzYuMS04MS4xYy0xMDIuOS02My4zLTE3NzYuOC0xOTgyLjYtMTgzNi4yLTIxMDUuM0M4MjEuMSwyNTU0LjgsODI1LjEsMjY3MS41LDgyNS4xLTYxdi0yNTE0LjlsNDUuNS04Ny4xYzI1LjctNTEuNCw3MS4yLTEwNC45LDExMi44LTEyOC42YzY1LjMtMzcuNiwxMDguOC0zOS42LDg3Ni41LTQ1LjVsODA1LjMtNS45djQ5Ni42djQ5NC43aC00NTMuMWMtNDM1LjMsMC00NTMuMSwyLTUxOC40LDQ1LjVjLTE0Ni40LDk3LTEzNi41LTQzLjUtMTM2LjUsMjEzMWMwLDE4NTkuOSwyLDE5NTIuOSwzNy42LDIwMzAuMWMyNy43LDYxLjMsNTkuNCw5MywxMjQuNywxMjQuNmM4My4xLDM5LjYsMTE2LjcsNDEuNiw1NjcuOSw0MS42YzcwNi40LDAsNjc0LjctMzUuNiw2NzQuNyw3NzkuNmMwLDUyOC4zLDAsNTQyLjEsNDUuNSw2MDcuNGM5NSwxNDIuNSwyMS44LDEzNi41LDE1NjcuMSwxMzYuNWMxMzA3LjksMCwxMzg5LTIsMTQ2Ni4yLTM3LjZjMTA2LjktNDcuNSwxNjYuMi0xNjYuMiwxNjYuMi0zMjQuNXYtMTEyLjhoMzY4aDM2NmwtNS45LDYwOS40Yy01LjksNTY1LjktNy45LDYxMS40LTQ1LjUsNjc0LjdjLTIxLjgsMzcuNi02NS4zLDg1LjEtOTUsMTA4LjhjLTU1LjQsNDEuNi01OS40LDQxLjYtMTg5OS41LDQ1LjVDMzEyNC4zLDUwMTIuMywzMDQ3LjEsNTAxMi4zLDI5NDYuMiw0OTc0Ljd6IiBzdHlsZT0iZmlsbDojYTliN2I3Ij48L3BhdGg+PHBhdGggZD0iTTUyODEsMzAzNS42Yy05OC45LTIxLjgtMjcxLjEtMTA0LjktMzM4LjQtMTY0LjJjLTExMi44LTEwMi45LTE3MTMuNS0xOTQ3LTE3NTMuMS0yMDIwLjJjLTI1LjctNDUuNS02MS4zLTEzMC42LTgxLjEtMTkwYy0zNS42LTEwNC45LTM3LjYtMjIzLjYtMzcuNi0yNjcxLjJjMC0yNTI2LjcsMC0yNTYyLjQsMzkuNi0yNjI5LjZjMjEuOC0zNy42LDY1LjMtODUuMSw5NS0xMDguOGw1NS40LTQxLjVINjExOGMyODUzLjIsMCwyODU3LjIsMCwyOTEwLjYsNDEuNWMyOS43LDIxLjgsNzMuMiw2NS4zLDk1LDk1bDQxLjUsNTMuNGw1LjksMzY5NC4ybDQsMzY5NC4ybC00My41LDg5Yy0yNy43LDUxLjUtNzMuMiwxMDQuOS0xMTQuOCwxMjguNmMtNjcuMywzOS42LTEwMC45LDM5LjYtMTg1OS45LDQzLjVDNjE3MS40LDMwNDkuNCw1MzI4LjUsMzA0My41LDUyODEsMzAzNS42eiBNODMzNCwyMDA2LjdjMTE0LjgtMTA0LjksMTA4LjgsNTEuNCwxMDguOC0yODgyLjljMC0yNjM3LjUtMi0yNzA4LjgtMzkuNi0yNzkxLjljLTI5LjctNjUuMy01Ny40LTkzLTEyMi43LTEyMi43Yy04My4xLTM3LjYtMTQ2LjQtMzkuNi0yMTYyLjctMzkuNnMtMjA3OS42LDItMjE2Mi43LDM5LjZjLTY1LjMsMjkuNy05Myw1Ny40LTEyNC43LDEyNi43Yy0zNy42LDg3LTM3LjYsMTMyLjUtMzMuNiwyMDUzLjhsNS45LDE5NjQuOGw0NS41LDY1LjNjNzkuMSwxMTAuOCw5MSwxMTIuOCw2NTEsMTIyLjdjNzM2LDEzLjksNjk4LjUtMjcuNyw2OTguNSw3NzEuN2MwLDYwMS41LDUuOSw2MzEuMiwxMjguNiw3MTIuM2M1Ny40LDM5LjYsOTEsMzkuNiwxNTA3LjcsMzUuNmwxNDQ2LjQtNS45TDgzMzQsMjAwNi43eiIgc3R5bGU9ImZpbGw6I2E5YjdiNyI+PC9wYXRoPjxwYXRoIGQ9Ik00NjI0LjEtMjk4LjV2LTMwNi43SDYxMThoMTQ5My45djMwNi43VjguMkg2MTE4SDQ2MjQuMVYtMjk4LjV6IiBzdHlsZT0iZmlsbDojYTliN2I3Ij48L3BhdGg+PHBhdGggZD0iTTQ2MjQuMS0xNDI2LjNWLTE3MzNINjExOGgxNDkzLjl2MzA2Ljd2MzA2LjdINjExOEg0NjI0LjFWLTE0MjYuM3oiIHN0eWxlPSJmaWxsOiNhOWI3YjciPjwvcGF0aD48cGF0aCBkPSJNNDYyNC4xLTI1NDQuMlYtMjg0MUg2MTE4aDE0OTMuOXYyOTYuOHYyOTYuOEg2MTE4SDQ2MjQuMVYtMjU0NC4yeiIgc3R5bGU9ImZpbGw6I2E5YjdiNyI+PC9wYXRoPjwvZz48L2c+PC9zdmc+ICA="
+                 width="16" height="16">
         </button>
         <code id="code_text" class="java"></code>
     </pre>
+    </div>
+    <!-- END table create code -->
 </div>
-<!-- END table create code -->
 
 </body>
 
@@ -117,21 +131,21 @@
         })
     }
 
-    function initTbleDetail(){
+    function initTbleDetail() {
         var tableName = $.getUrlParam("tableName");
         var tables = JSON.parse(localStorage.getItem("tableList"));
-        if(tables && tables.length > 0){
-            for(var i in tables) {
-                if(tables[i].tableName === tableName){
+        if (tables && tables.length > 0) {
+            for (var i in tables) {
+                if (tables[i].tableName === tableName) {
                     var columnInfo = tables[i].columns;
                     console.log(columnInfo);
-                    for(var c in columnInfo){
+                    for (var c in columnInfo) {
                         var column = columnInfo[c];
                         var row = $("<tr>" +
-                            "<td>"+ column.columnName + "</td>" +
-                            "<td>"+ column.columnType + "</td>" +
-                            "<td>"+ column.dateSize + "</td>" +
-                            "<td>"+ column.remarks + "</td>" +
+                            "<td>" + column.columnName + "</td>" +
+                            "<td>" + column.columnType + "</td>" +
+                            "<td>" + column.dateSize + "</td>" +
+                            "<td>" + column.remarks + "</td>" +
                             "</tr>");
                         $("#table_info").append(row);
                     }
