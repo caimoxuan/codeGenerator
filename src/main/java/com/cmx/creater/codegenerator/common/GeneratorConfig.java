@@ -48,11 +48,11 @@ public class GeneratorConfig {
         this.lombokEnable = true;
     }
 
-    public void setDaoPath(String dapPath){
-        if(dapPath == null){
+    public void setDaoPath(String daoPath){
+        if(daoPath == null){
             return;
         }
-        this.daoPath = basePackageName + "." + dapPath.substring(daoPath.lastIndexOf(".") + 1);
+        this.daoPath = basePackageName + "." + daoPath.substring(daoPath.lastIndexOf(".") + 1);
     }
 
     public void setMapperPath(String mapperPath){
