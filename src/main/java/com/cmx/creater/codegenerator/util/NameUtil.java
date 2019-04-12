@@ -10,7 +10,7 @@ public final class NameUtil {
 
 	private static final Pattern LINE_PATTERN = Pattern.compile("_(\\w)");
 
-	private static final String TABLE_PREFIX = "t_";
+	private static final String[] TABLE_PREFIXS = {"t_", "tbl_", "T_", "TBL_"};
 
 	private static final String SPLIT_CHAR = "_";
 
@@ -23,8 +23,10 @@ public final class NameUtil {
 		
 		tableName = tableName.toLowerCase();
 
-		if(tableName.startsWith(TABLE_PREFIX)){
-			tableName = tableName.substring(2);
+		for(String s : TABLE_PREFIXS) {
+			if (tableName.startsWith(s)) {
+				tableName = tableName.substring(s.length());
+			}
 		}
 
 		StringBuilder newStr = new StringBuilder(tableName.substring(0, 1).toUpperCase() + tableName.substring(1));
