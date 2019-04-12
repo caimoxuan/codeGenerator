@@ -148,6 +148,9 @@
     <div class="table_content">
     </div>
     <!-- END table content -->
+    <button type="button" class="btn btn-primary" id="btn_package">
+        <a href="/code/all?types=bean,dao,mapper">打包</a>
+    </button>
 </div>
 </body>
 <script>
@@ -194,6 +197,7 @@
             success: function (data) {
                 if (data.data) {
                     drawTableList(data.data);
+                    $("#btn_package").css("display", "block");
                     localStorage.setItem("tableList", JSON.stringify(data.data));
                 } else {
                     alert(data.message);
