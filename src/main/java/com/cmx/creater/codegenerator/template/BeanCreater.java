@@ -60,7 +60,7 @@ public class BeanCreater extends AbstractCreater implements CodeCreater {
         for (Column column : columns.values()) {
             String type = SqlTypeUtil.getJavaType(column.getColumnType());
             if ("Date".equals(type)) {
-                sb.append("import java.util.Data;\n");
+                sb.append("import java.util.Date;\n");
                 break;
             }
         }
