@@ -26,8 +26,6 @@ public final class SqlTypeUtil {
             case "bigint unsigned":
             case "id":
             case "ID":
-            case "timestamp":
-            case "TIMESTAMP":
                 return "Long";
             case "float":
             case "FLOAT":
@@ -40,6 +38,8 @@ public final class SqlTypeUtil {
                 return "BigDecimal";
             case "datetime":
             case "DATETIME":
+            case "timestamp":
+            case "TIMESTAMP":
                 return "Date";
             case "bit":
             case "BIT":
