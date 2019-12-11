@@ -12,14 +12,29 @@ import lombok.Data;
 @AllArgsConstructor
 public class Column {
 
+    /**
+     * 字段名称
+     */
     private String columnName;
 
+    /**
+     * 字段类型
+     */
     private String columnType;
 
+    /**
+     * 字段长度
+     */
     private Integer dateSize;
 
+    /**
+     * 是否 not null
+     */
     private Integer nullAble;
 
+    /**
+     * 备注
+     */
     private String remarks;
 
 }

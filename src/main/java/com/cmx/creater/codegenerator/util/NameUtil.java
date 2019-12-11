@@ -48,7 +48,7 @@ public final class NameUtil {
 	 * @return
 	 */
 	public static String getLowCaseName(String name){
-		return name.substring(0, 1).toLowerCase() + name.substring(1, name.length());
+		return name.substring(0, 1).toLowerCase() + name.substring(1);
 	}
 
 	/**

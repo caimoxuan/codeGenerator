@@ -56,7 +56,7 @@ public class BeanCreater extends AbstractCreater implements CodeCreater {
         Map<String, Column> columns = table.getColumns();
 
         String beanPackage = config.getDomainPath();
-        sb.append("package " + beanPackage + ";\n");
+        sb.append("package ").append(beanPackage).append(";\n");
         for (Column column : columns.values()) {
             String type = SqlTypeUtil.getJavaType(column.getColumnType());
             if ("Date".equals(type)) {

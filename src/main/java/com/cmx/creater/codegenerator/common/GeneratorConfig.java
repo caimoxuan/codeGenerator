@@ -42,7 +42,7 @@ public class GeneratorConfig {
         this.daoPath = basePackageName + ".mapper";
         this.daoSuffix = "Mapper";
         this.mapperPath = resourcePath + ".mapper";
-        this.domainPath = basePackageName + ".domain";
+        this.domainPath = basePackageName + ".entity";
         this.servicePath = basePackageName + ".service";
         this.basePath = basePackageName + ".base";
         this.lombokEnable = true;
