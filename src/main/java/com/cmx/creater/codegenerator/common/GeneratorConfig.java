@@ -35,6 +35,11 @@ public class GeneratorConfig {
      */
     private Boolean lombokEnable;
 
+    /**
+     * 作者名
+     */
+    private String author;
+
 
     public GeneratorConfig(){
         this.basePackageName = "com.code.generator";
@@ -46,6 +51,7 @@ public class GeneratorConfig {
         this.servicePath = basePackageName + ".service";
         this.basePath = basePackageName + ".base";
         this.lombokEnable = true;
+        this.author = "cmx";
     }
 
     public void setDaoPath(String daoPath){
